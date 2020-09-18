@@ -103,7 +103,7 @@ networks:
   default:
     ipam:
       config:
-        - subnet: 172.18.100.0/24
+        - subnet: 172.19.100.0/24
 
 volumes:
   mongo-db: ~
