@@ -99,6 +99,17 @@ services:
     volumes:
       - mysql-db:/var/lib/mysql
 
+  grafana:
+    hostname: grafana
+    container_name: grafana_inspira
+    image: grafana/grafana:latest
+    ports:
+      - 3000:3000
+    networks:
+      - default
+    expose:
+      - "3000"  
+
 networks:
   default:
     ipam:
