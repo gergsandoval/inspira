@@ -93,8 +93,8 @@ services:
     networks:
       - default
     environment:
-      - "MYSQL_ROOT_PASSWORD=123"
-      - "MYSQL_ROOT_HOST=%"
+      - MYSQL_ROOT_PASSWORD=123
+      - MYSQL_ROOT_HOST=%
     volumes:
       - mysql-db:/var/lib/mysql
 
