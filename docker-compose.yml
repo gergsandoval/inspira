@@ -93,8 +93,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=123
       - MYSQL_ROOT_HOST=%
-    volumes:
-      - mysql-db:/var/lib/mysql
 
   postgres-db:
     image: postgres:latest
@@ -116,7 +114,7 @@ services:
     hostname: pg-admin
     container_name: pgadmin
     expose:
-        - "80"
+        - "3100"
     ports:
         - "3100:80"
     networks:
@@ -147,4 +145,3 @@ networks:
 
 volumes:
   mongo-db: ~
-  mysql-db: ~
