@@ -87,7 +87,7 @@ services:
     expose:
       - "3306"
     ports:
-      - "3306:3306" # localhost:3306
+      - "3306:3306" 
     networks:
       - default
     environment:
@@ -108,6 +108,8 @@ services:
         - "POSTGRES_PASSWORD=password"
         - "POSTGRES_USER=postgres"
         - "POSTGRES_DB=postgres"
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
 
   pgadmin:
     image: dpage/pgadmin4:latest
@@ -145,3 +147,4 @@ networks:
 
 volumes:
   mongo-db: ~
+  postgres-db: ~
