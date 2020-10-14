@@ -109,7 +109,7 @@ services:
         - "POSTGRES_USER=postgres"
         - "POSTGRES_DB=postgres"
     volumes:
-      - F:/ort/4 cuatrimestre/Proyecto final/PostgresVolumeTest:/var/lib/postgresql/data
+      - /home/ubuntu/postgres-volume:/var/lib/postgresql/data
 
   pgadmin:
     image: dpage/pgadmin4:latest
