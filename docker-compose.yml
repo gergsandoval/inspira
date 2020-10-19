@@ -9,7 +9,7 @@ services:
     ports:
         - "5432:5432"
     user: 
-        - $(id -u):$(id -g)
+        - $UID:$GID
     networks:
         - default
     environment:
