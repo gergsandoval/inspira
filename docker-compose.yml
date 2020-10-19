@@ -16,6 +16,8 @@ services:
         - "POSTGRES_PASSWORD=password"
         - "POSTGRES_USER=postgres"
         - "POSTGRES_DB=postgres"
+        - "PGDATA=/pgdata"
     volumes:
-      - /etc/passwd:/etc/passwd:ro
+      - /home/ubuntu/postgres-monday19:/pgdata
+
       
