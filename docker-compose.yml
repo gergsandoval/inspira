@@ -9,7 +9,7 @@ services:
     ports:
         - "5432:5432"
     user: 
-        - $UID:$GID
+        - ubuntu:ubuntu
     networks:
         - default
     environment:
