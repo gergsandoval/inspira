@@ -102,6 +102,8 @@ services:
         - "5432"
     ports:
         - "5432:5432"
+    user: 
+        - "$(id -u):$(id -g)"
     networks:
         - default
     environment:
@@ -109,7 +111,7 @@ services:
         - "POSTGRES_USER=postgres"
         - "POSTGRES_DB=postgres"
     volumes:
-      - /home/ubuntu/postgres-volume:/var/lib/postgresql/data
+      - etc/passwd:/etc/passwd:ro
 
   pgadmin:
     image: dpage/pgadmin4:latest
