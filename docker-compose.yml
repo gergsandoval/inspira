@@ -9,7 +9,7 @@ services:
     ports:
         - "5432:5432"
     user: 
-        - ubuntu:ubuntu
+        - "ubuntu:ubuntu"
     networks:
         - default
     environment:
