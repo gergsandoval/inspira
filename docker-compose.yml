@@ -1,4 +1,5 @@
 version: "3.5"
+
 services:
   postgres-db:
     image: postgres:latest
@@ -8,13 +9,13 @@ services:
         - "5432"
     ports:
         - "5432:5432"
-    user: 
-        - "1001:1001"
     networks:
         - default
+    user: $(id -u):$(id -g)
     environment:
         - "POSTGRES_PASSWORD=password"
         - "POSTGRES_USER=postgres"
         - "POSTGRES_DB=postgres"
     volumes:
-      - etc/passwd:/etc/passwd:ro
+      - /etc/passwd:/etc/passwd:ro
+      
