@@ -80,20 +80,6 @@ services:
         host=`hostname --ip-address || echo '127.0.0.1'`; 
         mongo --quiet $host/test --eval 'quit(db.runCommand({ ping: 1 }).ok ? 0 : 2)' && echo 0 || echo 1    
 
-  mysql-db:
-    image: mysql:5.7
-    hostname: mysql-db
-    container_name: db-mysql
-    expose:
-      - "3306"
-    ports:
-      - "3306:3306" 
-    networks:
-      - default
-    environment:
-      - MYSQL_ROOT_PASSWORD=123
-      - MYSQL_ROOT_HOST=%
-
   postgres-db:
     image: postgres:latest
     hostname: postgres-db
@@ -109,7 +95,7 @@ services:
         - "POSTGRES_USER=postgres"
         - "POSTGRES_DB=postgres"
     volumes:
-      - /home/ubuntu/postgres-volume:/var/lib/postgresql/data
+      - postgres-db:/var/lib/postgresql/data
 
   pgadmin:
     image: dpage/pgadmin4:latest
@@ -137,7 +123,9 @@ services:
     networks:
       - default
     expose:
-      - "3000"  
+      - "3000"
+    volumes:
+      - grafana-volume:/var/lib/grafana/data  
 
 networks:
   default:
@@ -148,3 +136,4 @@ networks:
 volumes:
   mongo-db: ~
   postgres-db: ~
+  grafana: ~
