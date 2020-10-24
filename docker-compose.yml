@@ -136,4 +136,4 @@ networks:
 volumes:
   mongo-db: ~
   postgres-db: ~
-  grafana: ~
+  grafana-volume: ~
