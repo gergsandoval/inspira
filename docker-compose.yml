@@ -36,7 +36,7 @@ services:
 
   # IoT-Agent is configured for the UltraLight Protocol
   iot-agent:
-    image: fiware/iotagent-ul:1.13.0
+    image: fiware/iotagent-json
     hostname: iot-agent
     container_name: fiware-iot-agent
     depends_on:
@@ -57,11 +57,9 @@ services:
       - IOTA_AUTOCAST=true # Ensure Ultralight number values are read as numbers not strings
       - IOTA_MONGO_HOST=mongo-db # The host name of MongoDB
       - IOTA_MONGO_PORT=27017 # The port mongoDB is listening on
-      - IOTA_MONGO_DB=iotagentul # The name of the database used in mongoDB
+      - IOTA_MONGO_DB=iotagent-json # The name of the database used in mongoDB
       - IOTA_HTTP_PORT=7896 # The port used for device traffic over HTTP
       - IOTA_PROVIDER_URL=http://iot-agent:4041
-    healthcheck:
-      test: curl --fail -s http://iot-agent:4041/iot/about || exit 1
 
   # Databases
   mongo-db:
@@ -80,23 +78,41 @@ services:
     healthcheck:
       test: |
         host=`hostname --ip-address || echo '127.0.0.1'`; 
-        mongo --quiet $host/test --eval 'quit(db.runCommand({ ping: 1 }).ok ? 0 : 2)' && echo 0 || echo 1    
+        mongo --quiet $host/test --eval 'quit(db.runCommand({ ping: 1 }).ok ? 0 : 2)' && echo 0 || echo 1
 
-  mysql-db:
-    image: mysql:5.7
-    hostname: mysql-db
-    container_name: db-mysql
+  postgres-db:
+    image: postgres:latest
+    hostname: postgres-db
+    container_name: db-postgres
     expose:
-      - "3306"
+      - "5432"
     ports:
-      - "3306:3306" # localhost:3306
+      - "5432:5432"
     networks:
       - default
     environment:
-      - "MYSQL_ROOT_PASSWORD=123"
-      - "MYSQL_ROOT_HOST=%"
+      - "POSTGRES_PASSWORD=password"
+      - "POSTGRES_USER=postgres"
+      - "POSTGRES_DB=postgres"
     volumes:
-      - mysql-db:/var/lib/mysql
+      - postgres-db:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    hostname: pg-admin
+    container_name: pgadmin
+    expose:
+      - "3100"
+    ports:
+      - "3100:80"
+    networks:
+      - default
+    environment:
+      - "PGADMIN_DEFAULT_EMAIL=user@domain.com"
+      - "PGADMIN_DEFAULT_PASSWORD=SuperSecret"
+      - "PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION=True"
+      - "PGADMIN_CONFIG_LOGIN_BANNER='Authorised users only!'"
+      - "PGADMIN_CONFIG_CONSOLE_LOG_LEVEL=10"
 
   grafana:
     hostname: grafana
@@ -107,7 +123,9 @@ services:
     networks:
       - default
     expose:
-      - "3000"  
+      - "3000"
+    volumes:
+      - grafana-volume:/var/lib/grafana/data
 
 networks:
   default:
@@ -117,4 +135,5 @@ networks:
 
 volumes:
   mongo-db: ~
-  mysql-db: ~
+  postgres-db: ~
+  grafana-volume: ~

@@ -1,0 +1,500 @@
+{
+	"info": {
+		"_postman_id": "19712bbe-1536-4526-a3fc-8a6300dcbd1d",
+		"name": "Fiware inspira request templates",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "crear subscription de entidades device a NIFI dispositivos mq9",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "fiware-service",
+						"value": "{{service}}"
+					},
+					{
+						"key": "fiware-servicepath",
+						"value": "/{{servicepath}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"description\": \"Notify me of sense data\",\n  \"subject\": {\n    \"entities\": [{\"idPattern\": \".*\", \"type\": \"{{tipoEntidad}}\"}],\n    \"condition\": {\n      \"attrs\": []\n    }\n  },\n  \"notification\": {\n    \"http\": {\n      \"url\": \"http://fiware-draco:5050/v2/notify\"\n    }\n  }\n}"
+				},
+				"url": {
+					"raw": "http://{{Host}}:1026/v2/subscriptions/",
+					"protocol": "http",
+					"host": [
+						"{{Host}}"
+					],
+					"port": "1026",
+					"path": [
+						"v2",
+						"subscriptions",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "iot service config para agente json mq9",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "fiware-service",
+						"value": "{{service}}"
+					},
+					{
+						"key": "fiware-servicepath",
+						"value": "/{{servicepath}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"services\": [\n   {\n     \"apikey\":      \"{{tokenAcceso}}\",\n     \"cbroker\":     \"{{Host}}:1026\",\n     \"entity_type\": \"{{tipoEntidad}}\",\n     \"resource\":    \"/iot/json\"\n   }\n ]\n}"
+				},
+				"url": {
+					"raw": "http://{{Host}}:4041/iot/services",
+					"protocol": "http",
+					"host": [
+						"{{Host}}"
+					],
+					"port": "4041",
+					"path": [
+						"iot",
+						"services"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear entidad escuela ort orion",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "fiware-service",
+						"value": "{{service}}",
+						"type": "text"
+					},
+					{
+						"key": "fiware-servicepath",
+						"value": "/{{servicepath}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n    \"id\": \"urn:ngsi-ld:Escuela:001\",\n    \"type\": \"Escuela\",\n    \"address\": {\n        \"type\": \"PostalAddress\",\n        \"value\": {\n            \"streetAddress\": \"Av. Del Libertador 6796\",\n            \"addressRegion\": \"Buenos Aires\",\n            \"addressLocality\": \"Ciudad autonoma de Buenos Aires\",\n            \"postalCode\": \"1429\"\n        },\n        \"metadata\": {\n            \"verified\": {\n                \"value\": true,\n                \"type\": \"Boolean\"\n            }\n        }\n    },\n    \"location\": {\n        \"type\": \"geo:json\",\n        \"value\": {\n             \"type\": \"Point\",\n             \"coordinates\": [-34.5479933, -58.4564436]\n        }\n    },\n    \"name\": {\n        \"type\": \"Text\",\n        \"value\": \"Escuela tecnica ORT\"\n    },\n    \"shortName\":{\n        \"type\": \"Text\",\n        \"value\": \"ORT\"\n    },\n    \"cue\":{\n        \"type\": \"Text\",\n        \"value\": \"201494\"\n    },\n    \"cui\":{\n        \"type\": \"Text\",\n        \"value\": \"201480\"\n    },\n    \"tel\":{\n        \"type\": \"Text\",\n        \"value\": \"4789-6500\"\n    },\n    \"email\": {\n        \"type\": \"Text\",\n        \"value\": \"secesc2@ort.edu.ar\"\n    },\n    \"modalLevel\":{\n        \"type\": \"Text\",\n        \"value\": \"Secundario\"\n    }\n}"
+				},
+				"url": {
+					"raw": "http://{{Host}}:1026/v2/entities",
+					"protocol": "http",
+					"host": [
+						"{{Host}}"
+					],
+					"port": "1026",
+					"path": [
+						"v2",
+						"entities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear entidad aula labo 1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "fiware-service",
+						"value": "{{service}}",
+						"type": "text"
+					},
+					{
+						"key": "fiware-servicepath",
+						"value": "/{{servicepath}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n    \"id\": \"urn:ngsi-ld:Aula:001\",\n    \"type\": \"Aula\",\n    \"address\": {\n        \"type\": \"PostalAddress\",\n        \"value\": {\n            \"streetAddress\": \"Av. Del Libertador 6796\",\n            \"addressRegion\": \"Buenos Aires\",\n            \"addressLocality\": \"Ciudad autonoma de Buenos Aires\",\n            \"postalCode\": \"1429\"\n        },\n        \"metadata\": {\n            \"verified\": {\n                \"value\": true,\n                \"type\": \"Boolean\"\n            }\n        }\n    },\n    \"location\": {\n        \"type\": \"geo:json\",\n        \"value\": {\n             \"type\": \"Point\",\n             \"coordinates\": [-34.5479933,  -58.4564436]\n        }\n    },\n    \"floor\":{\n        \"type\": \"Text\",\n        \"value\":\"1er\"\n    },\n    \"name\": {\n        \"type\": \"Text\",\n        \"value\": \"Laboratorio01\"\n    },\n    \"refEscuela\": {\n        \"type\": \"Relationship\",\n        \"value\": \"urn:ngsi-ld:Escuela:001\"\n    }\n}"
+				},
+				"url": {
+					"raw": "http://{{Host}}:1026/v2/entities",
+					"protocol": "http",
+					"host": [
+						"{{Host}}"
+					],
+					"port": "1026",
+					"path": [
+						"v2",
+						"entities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sensor mq9 labo 1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "fiware-service",
+						"value": "{{service}}"
+					},
+					{
+						"key": "fiware-servicepath",
+						"value": "/{{servicepath}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"devices\": [\n   {\n     \"device_id\":   \"mq9001\",\n     \"entity_name\": \"urn:ngsi-ld:Mq9:001\",\n     \"entity_type\": \"Device\",\n     \"timezone\":    \"America/Argentina/Buenos_Aires\",\n     \"attributes\": [\n       { \n           \"object_id\": \"ch4\",\n           \"name\": \"CH4\",\n           \"type\": \"Integer\" \n        },\n       { \n           \"object_id\": \"lpg\",\n           \"name\": \"LPG\",\n           \"type\": \"Integer\" \n        },\n       { \n           \"object_id\": \"co\",\n           \"name\": \"CO\",\n           \"type\": \"Integer\" \n        }\n     ],\n     \"static_attributes\": [\n        { \n           \"name\":\"refAula\",\n           \"type\": \"Relationship\",\n           \"value\": \"urn:ngsi-ld:Aula:001\"\n        },\n        { \n           \"name\":\"category\",\n           \"type\": \"string\",\n           \"value\": \"Sensor\"\n        },\n        { \n           \"name\":\"function\",\n           \"type\": \"string\",\n           \"value\": \"Sensing\"\n        },\n        {\n            \"name\":\"modelName\",\n            \"type\": \"string\",\n            \"value\": \"Mq 9\"\n        },\n        {\n            \"name\": \"name\",\n            \"type\": \"string\",\n            \"value\": \"Mocked Mq 9 sensor\"\n        },\n        {\n            \"name\":\"brandName\",\n            \"type\": \"string\",\n            \"value\": \"Arduino\"\n        },\n        {\n            \"name\":\"manufacturerName\",\n            \"type\": \"string\",\n            \"value\": \"Arduino\"\n        },\n        {\n            \"name\":\"controlledProperty\",\n            \"type\": \"string\",\n            \"value\": [\"CH4\", \"CO\", \"LPG\"]\n        }\n     ]\n   }\n ]\n}\n\n"
+				},
+				"url": {
+					"raw": "http://{{Host}}:4041/iot/devices",
+					"protocol": "http",
+					"host": [
+						"{{Host}}"
+					],
+					"port": "4041",
+					"path": [
+						"iot",
+						"devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sensor dht11 labo 1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "fiware-service",
+						"value": "{{service}}"
+					},
+					{
+						"key": "fiware-servicepath",
+						"value": "/{{servicepath}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"devices\": [\n   {\n     \"device_id\":   \"dht11001\",\n     \"entity_name\": \"urn:ngsi-ld:dht11:001\",\n     \"entity_type\": \"Device\",\n     \"timezone\":    \"America/Argentina/Buenos_Aires\",\n     \"attributes\": [\n       { \n           \"object_id\": \"t\",\n           \"name\": \"temperatura\",\n           \"type\": \"Integer\" \n        },\n        { \n           \"object_id\": \"h\",\n           \"name\": \"humedad\",\n           \"type\": \"Integer\" \n        }\n     ],\n     \"static_attributes\": [\n       { \n           \"name\":\"refAula\",\n           \"type\": \"Relationship\",\n           \"value\": \"urn:ngsi-ld:Aula:001\"\n        },\n        { \n           \"name\":\"category\",\n           \"type\": \"string\",\n           \"value\": \"Sensor\"\n        },\n        { \n           \"name\":\"function\",\n           \"type\": \"string\",\n           \"value\": \"Sensing\"\n        },\n        {\n            \"name\":\"modelName\",\n            \"type\": \"string\",\n            \"value\": \"Dht 11\"\n        },\n        {\n            \"name\": \"name\",\n            \"type\": \"string\",\n            \"value\": \"Mocked dht11 sensor\"\n        },\n        {\n            \"name\":\"brandName\",\n            \"type\": \"string\",\n            \"value\": \"Arduino\"\n        },\n        {\n            \"name\":\"manufacturerName\",\n            \"type\": \"string\",\n            \"value\": \"Arduino\"\n        },\n        {\n            \"name\":\"controlledProperty\",\n            \"type\": \"string\",\n            \"value\": [\"temperatura\", \"humedad\"]\n        }\n     ]\n   }\n ]\n}\n"
+				},
+				"url": {
+					"raw": "http://{{Host}}:4041/iot/devices",
+					"protocol": "http",
+					"host": [
+						"{{Host}}"
+					],
+					"port": "4041",
+					"path": [
+						"iot",
+						"devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "enviar data desde sensor mq9 formato json labo 1",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2f5911b6-e1b4-4f86-8f37-4fc562eb0ae4",
+						"exec": [
+							"const ch4Labo1 = Math.floor(Math.random()*100+1)\r",
+							"pm.globals.set(\"ch4Labo1\", ch4Labo1)\r",
+							"\r",
+							"const coLabo1 = Math.floor(Math.random()*100+1)\r",
+							"pm.globals.set(\"coLabo1\", coLabo1)\r",
+							"\r",
+							"const lpgLabo1 = Math.floor(Math.random()*100+1)\r",
+							"pm.globals.set(\"lpgLabo1\", lpgLabo1)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "8eaf7c6f-39f9-414d-96c5-be5be68cb5d3",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ch4\": {{ch4Labo1}},\r\n    \"lpg\": {{lpgLabo1}},\r\n    \"co\" : {{coLabo1}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{Host}}:7896/iot/json?k={{tokenAcceso}}&i=mq9001",
+					"protocol": "http",
+					"host": [
+						"{{Host}}"
+					],
+					"port": "7896",
+					"path": [
+						"iot",
+						"json"
+					],
+					"query": [
+						{
+							"key": "k",
+							"value": "{{tokenAcceso}}"
+						},
+						{
+							"key": "i",
+							"value": "mq9001"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "enviar data desde sensor dht11formato json labo 1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"t\": 56,\r\n    \"h\": 25  \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{Host}}:7896/iot/json?k={{tokenAcceso}}&i=dht11001",
+					"protocol": "http",
+					"host": [
+						"{{Host}}"
+					],
+					"port": "7896",
+					"path": [
+						"iot",
+						"json"
+					],
+					"query": [
+						{
+							"key": "k",
+							"value": "{{tokenAcceso}}"
+						},
+						{
+							"key": "i",
+							"value": "dht11001"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear subscripcion de temperatura y humedad",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "fiware-service",
+						"value": "{{service}}"
+					},
+					{
+						"key": "fiware-servicepath",
+						"type": "text",
+						"value": "/{{servicepath}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"description\": \"Notificacion de temperatura\",\n  \"subject\": {\n    \"entities\": [{\"idPattern\": \".*\", \"type\": \"Device\"}],\n    \"condition\": {\n      \"attrs\": [ \"temperatura\" ],\n      \"expression\" : {\"q\" : \"temperatura>35\"}\n    }\n  },\n  \"notification\": {\n    \"http\": {\n      \"url\": \"https://us-central1-inspira-290223.cloudfunctions.net/notification\"\n    },\n    \"attrsFormat\": \"keyValues\",\n    \"attrs\": [\"temperatura\", \"modelName\", \"controlledProperty\"]\n  },\n  \"throttling\": 60\n}"
+				},
+				"url": {
+					"raw": "http://{{Host}}:1026/v2/subscriptions/",
+					"protocol": "http",
+					"host": [
+						"{{Host}}"
+					],
+					"port": "1026",
+					"path": [
+						"v2",
+						"subscriptions",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List all Subscriptions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "fiware-servicepath",
+						"type": "text",
+						"value": "/{{servicepath}}"
+					},
+					{
+						"key": "fiware-service",
+						"type": "text",
+						"value": "{{service}}"
+					}
+				],
+				"url": {
+					"raw": "http://{{Host}}:1026/v2/subscriptions/",
+					"protocol": "http",
+					"host": [
+						"{{Host}}"
+					],
+					"port": "1026",
+					"path": [
+						"v2",
+						"subscriptions",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear atriubutos en entidad edificio",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "fiware-service",
+						"value": "{{service}}",
+						"type": "text"
+					},
+					{
+						"key": "fiware-servicepath",
+						"value": "/{{servicepath}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n    \"shortName\":{\n        \"type\": \"Text\",\n        \"value\": \"ET Ort02\"\n    },\n    \"cue\":{\n        \"type\": \"Text\",\n        \"value\": \"201494\"\n    },\n    \"cui\":{\n        \"type\": \"Text\",\n        \"value\": \"201480\"\n    },\n    \"tel\":{\n        \"type\": \"Text\",\n        \"value\": \"4789-6500\"\n    },\n    \"email\": {\n        \"type\": \"Text\",\n        \"value\": \"secesc2@ort.edu.ar\"\n    },\n    \"modalLevel\":{\n        \"type\": \"Text\",\n        \"value\": \"Secundario\"\n    }\n}"
+				},
+				"url": {
+					"raw": "http://{{Host}}:1026/v2/entities/urn:ngsi-ld:Escuela:001/attrs",
+					"protocol": "http",
+					"host": [
+						"{{Host}}"
+					],
+					"port": "1026",
+					"path": [
+						"v2",
+						"entities",
+						"urn:ngsi-ld:Escuela:001",
+						"attrs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete edificio",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "fiware-service",
+						"value": "{{service}}",
+						"type": "text"
+					},
+					{
+						"key": "fiware-servicepath",
+						"value": "/{{servicepath}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{Host}}:1026/v2/entities/urn:ngsi-ld:Product:010",
+					"protocol": "http",
+					"host": [
+						"{{Host}}"
+					],
+					"port": "1026",
+					"path": [
+						"v2",
+						"entities",
+						"urn:ngsi-ld:Product:010"
+					]
+				},
+				"description": "This example deletes the Entity with `id=urn:ngsi-ld:Product:001` from the context\n\nEntities be deleted by making a DELETE request to the `/v2/entities/<entity>` endpoint.\n\n---\nSubsequent requests using the same `id` will result in an error response since the entity no longer exists"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
