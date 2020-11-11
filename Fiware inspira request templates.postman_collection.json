@@ -179,7 +179,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\"devices\": [\n   {\n     \"device_id\":   \"mq9001\",\n     \"entity_name\": \"urn:ngsi-ld:Mq9:001\",\n     \"entity_type\": \"Device\",\n     \"timezone\":    \"America/Argentina/Buenos_Aires\",\n     \"attributes\": [\n       { \n           \"object_id\": \"ch4\",\n           \"name\": \"CH4\",\n           \"type\": \"Integer\" \n        },\n       { \n           \"object_id\": \"lpg\",\n           \"name\": \"LPG\",\n           \"type\": \"Integer\" \n        },\n       { \n           \"object_id\": \"co\",\n           \"name\": \"CO\",\n           \"type\": \"Integer\" \n        }\n     ],\n     \"static_attributes\": [\n        { \n           \"name\":\"refAula\",\n           \"type\": \"Relationship\",\n           \"value\": \"urn:ngsi-ld:Aula:001\"\n        },\n        { \n           \"name\":\"category\",\n           \"type\": \"string\",\n           \"value\": \"Sensor\"\n        },\n        { \n           \"name\":\"function\",\n           \"type\": \"string\",\n           \"value\": \"Sensing\"\n        },\n        {\n            \"name\":\"modelName\",\n            \"type\": \"string\",\n            \"value\": \"Mq 9\"\n        },\n        {\n            \"name\": \"name\",\n            \"type\": \"string\",\n            \"value\": \"Mocked Mq 9 sensor\"\n        },\n        {\n            \"name\":\"brandName\",\n            \"type\": \"string\",\n            \"value\": \"Arduino\"\n        },\n        {\n            \"name\":\"manufacturerName\",\n            \"type\": \"string\",\n            \"value\": \"Arduino\"\n        },\n        {\n            \"name\":\"controlledProperty\",\n            \"type\": \"string\",\n            \"value\": [\"CH4\", \"CO\", \"LPG\"]\n        }\n     ]\n   }\n ]\n}\n\n"
+					"raw": "{\n\"devices\": [\n   {\n     \"device_id\":   \"mq9001\",\n     \"entity_name\": \"urn:ngsi-ld:Mq9:001\",\n     \"entity_type\": \"Device\",\n     \"timezone\":    \"America/Argentina/Buenos_Aires\",\n     \"attributes\": [\n       { \n           \"object_id\": \"ch4\",\n           \"name\": \"CH4\",\n           \"type\": \"Integer\" \n        },\n       { \n           \"object_id\": \"lpg\",\n           \"name\": \"LPG\",\n           \"type\": \"Integer\" \n        },\n       { \n           \"object_id\": \"co\",\n           \"name\": \"CO\",\n           \"type\": \"Integer\" \n        }\n     ],\n     \"static_attributes\": [\n        { \n           \"name\":\"refAula\",\n           \"type\": \"Relationship\",\n           \"value\": \"urn:ngsi-ld:Aula:001\"\n        },\n        { \n           \"name\":\"category\",\n           \"type\": \"string\",\n           \"value\": \"Sensor\"\n        },\n        { \n           \"name\":\"function\",\n           \"type\": \"string\",\n           \"value\": \"Sensing\"\n        },\n        {\n            \"name\":\"modelName\",\n            \"type\": \"string\",\n            \"value\": \"Mq 9\"\n        },\n        {\n            \"name\": \"name\",\n            \"type\": \"string\",\n            \"value\": \"Mocked Mq 9 sensor\"\n        },\n        {\n            \"name\":\"brandName\",\n            \"type\": \"string\",\n            \"value\": \"Arduino\"\n        },\n        {\n            \"name\":\"manufacturerName\",\n            \"type\": \"string\",\n            \"value\": \"Arduino\"\n        },\n        {\n            \"name\":\"controlledProperty\",\n            \"type\": \"string\",\n            \"value\": [\"CH4\", \"CO\", \"LPG\"]\n        },\n        {\n            \"name\": \"institucion\",\n            \"type\": \"Text\",\n            \"value\": \"nombre\"\n        }\n     ]\n   }\n ]\n}\n\n"
 				},
 				"url": {
 					"raw": "http://{{Host}}:4041/iot/devices",
@@ -216,7 +216,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n \"devices\": [\n   {\n     \"device_id\":   \"dht11001\",\n     \"entity_name\": \"urn:ngsi-ld:dht11:001\",\n     \"entity_type\": \"Device\",\n     \"timezone\":    \"America/Argentina/Buenos_Aires\",\n     \"attributes\": [\n       { \n           \"object_id\": \"t\",\n           \"name\": \"temperatura\",\n           \"type\": \"Integer\" \n        },\n        { \n           \"object_id\": \"h\",\n           \"name\": \"humedad\",\n           \"type\": \"Integer\" \n        }\n     ],\n     \"static_attributes\": [\n       { \n           \"name\":\"refAula\",\n           \"type\": \"Relationship\",\n           \"value\": \"urn:ngsi-ld:Aula:001\"\n        },\n        { \n           \"name\":\"category\",\n           \"type\": \"string\",\n           \"value\": \"Sensor\"\n        },\n        { \n           \"name\":\"function\",\n           \"type\": \"string\",\n           \"value\": \"Sensing\"\n        },\n        {\n            \"name\":\"modelName\",\n            \"type\": \"string\",\n            \"value\": \"Dht 11\"\n        },\n        {\n            \"name\": \"name\",\n            \"type\": \"string\",\n            \"value\": \"Mocked dht11 sensor\"\n        },\n        {\n            \"name\":\"brandName\",\n            \"type\": \"string\",\n            \"value\": \"Arduino\"\n        },\n        {\n            \"name\":\"manufacturerName\",\n            \"type\": \"string\",\n            \"value\": \"Arduino\"\n        },\n        {\n            \"name\":\"controlledProperty\",\n            \"type\": \"string\",\n            \"value\": [\"temperatura\", \"humedad\"]\n        }\n     ]\n   }\n ]\n}\n"
+					"raw": "{\n \"devices\": [\n   {\n     \"device_id\":   \"dht11001\",\n     \"entity_name\": \"urn:ngsi-ld:dht11:001\",\n     \"entity_type\": \"Device\",\n     \"timezone\":    \"America/Argentina/Buenos_Aires\",\n     \"attributes\": [\n       { \n           \"object_id\": \"t\",\n           \"name\": \"temperatura\",\n           \"type\": \"Integer\" \n        },\n        { \n           \"object_id\": \"h\",\n           \"name\": \"humedad\",\n           \"type\": \"Integer\" \n        }\n     ],\n     \"static_attributes\": [\n       { \n           \"name\":\"refAula\",\n           \"type\": \"Relationship\",\n           \"value\": \"urn:ngsi-ld:Aula:001\"\n        },\n        { \n           \"name\":\"category\",\n           \"type\": \"string\",\n           \"value\": \"Sensor\"\n        },\n        { \n           \"name\":\"function\",\n           \"type\": \"string\",\n           \"value\": \"Sensing\"\n        },\n        {\n            \"name\":\"modelName\",\n            \"type\": \"string\",\n            \"value\": \"Dht 11\"\n        },\n        {\n            \"name\": \"name\",\n            \"type\": \"string\",\n            \"value\": \"Mocked dht11 sensor\"\n        },\n        {\n            \"name\":\"brandName\",\n            \"type\": \"string\",\n            \"value\": \"Arduino\"\n        },\n        {\n            \"name\":\"manufacturerName\",\n            \"type\": \"string\",\n            \"value\": \"Arduino\"\n        },\n        {\n            \"name\":\"controlledProperty\",\n            \"type\": \"string\",\n            \"value\": [\"temperatura\", \"humedad\"]\n        },\n        {\n            \"name\": \"institucion\",\n            \"type\": \"Text\",\n            \"value\": \"nombre\"\n        }\n     ]\n   }\n ]\n}\n"
 				},
 				"url": {
 					"raw": "http://{{Host}}:4041/iot/devices",
@@ -351,7 +351,7 @@
 			"response": []
 		},
 		{
-			"name": "Crear subscripcion de temperatura y humedad",
+			"name": "Crear subscripcion de dht11",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -371,7 +371,46 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n \"description\": \"Notificacion de temperatura\",\n  \"subject\": {\n    \"entities\": [{\"idPattern\": \".*\", \"type\": \"Device\"}],\n    \"condition\": {\n      \"attrs\": [ \"temperatura\" ],\n      \"expression\" : {\"q\" : \"temperatura>35\"}\n    }\n  },\n  \"notification\": {\n    \"http\": {\n      \"url\": \"https://us-central1-inspira-290223.cloudfunctions.net/notification\"\n    },\n    \"attrsFormat\": \"keyValues\",\n    \"attrs\": [\"temperatura\", \"modelName\", \"controlledProperty\"]\n  },\n  \"throttling\": 60\n}"
+					"raw": "{\n \"description\": \"Notificacion de temperatura\",\n  \"subject\": {\n    \"entities\": [{\"idPattern\": \".*\", \"type\": \"Device\"}],\n    \"condition\": {\n      \"attrs\": [ \"temperatura\" ],\n      \"expression\" : {\"q\" : \"temperatura==41..50\"}\n    }\n  },\n  \"notification\": {\n    \"http\": {\n      \"url\": \"https://us-central1-inspira-290223.cloudfunctions.net/notification\"\n    },\n    \"attrsFormat\": \"keyValues\",\n    \"attrs\": [\"temperatura\", \"modelName\", \"controlledProperty\", \"institucion\"]\n  },\n  \"throttling\": 60\n}"
+				},
+				"url": {
+					"raw": "http://{{Host}}:1026/v2/subscriptions/",
+					"protocol": "http",
+					"host": [
+						"{{Host}}"
+					],
+					"port": "1026",
+					"path": [
+						"v2",
+						"subscriptions",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear subscripcion de mq9",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "fiware-service",
+						"value": "{{service}}"
+					},
+					{
+						"key": "fiware-servicepath",
+						"type": "text",
+						"value": "/{{servicepath}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"description\": \"Notificacion de temperatura\",\n  \"subject\": {\n    \"entities\": [{\"idPattern\": \".*\", \"type\": \"Device\"}],\n   \"condition\": {\n      \"attrs\": [ \"CO\" ],\n      \"expression\" : {\"q\" : \"CO==111..150\"}\n    }\n  },\n  \"notification\": {\n    \"http\": {\n      \"url\": \"https://us-central1-inspira-290223.cloudfunctions.net/notification\"\n    },\n    \"attrsFormat\": \"keyValues\",\n    \"attrs\": [\"temperatura\", \"modelName\", \"controlledProperty\"]\n  },\n  \"throttling\": 60\n}"
 				},
 				"url": {
 					"raw": "http://{{Host}}:1026/v2/subscriptions/",
