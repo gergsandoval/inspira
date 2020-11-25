@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "19712bbe-1536-4526-a3fc-8a6300dcbd1d",
-		"name": "Fiware inspira request templates",
+		"name": "Fiware inspira fidi request templates",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -82,7 +82,7 @@
 			"response": []
 		},
 		{
-			"name": "Crear entidad escuela ort orion",
+			"name": "Crear entidad hotel orion",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -92,18 +92,18 @@
 					},
 					{
 						"key": "fiware-service",
-						"value": "{{service}}",
+						"value": "openiot",
 						"type": "text"
 					},
 					{
 						"key": "fiware-servicepath",
-						"value": "/{{servicepath}}",
+						"value": "/edificios",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "\n{\n    \"id\": \"urn:ngsi-ld:Escuela:001\",\n    \"type\": \"Escuela\",\n    \"address\": {\n        \"type\": \"PostalAddress\",\n        \"value\": {\n            \"streetAddress\": \"Av. Del Libertador 6796\",\n            \"addressRegion\": \"Buenos Aires\",\n            \"addressLocality\": \"Ciudad autonoma de Buenos Aires\",\n            \"postalCode\": \"1429\"\n        },\n        \"metadata\": {\n            \"verified\": {\n                \"value\": true,\n                \"type\": \"Boolean\"\n            }\n        }\n    },\n    \"location\": {\n        \"type\": \"geo:json\",\n        \"value\": {\n             \"type\": \"Point\",\n             \"coordinates\": [-34.5479933, -58.4564436]\n        }\n    },\n    \"name\": {\n        \"type\": \"Text\",\n        \"value\": \"Escuela tecnica ORT\"\n    },\n    \"shortName\":{\n        \"type\": \"Text\",\n        \"value\": \"ORT\"\n    },\n    \"cue\":{\n        \"type\": \"Text\",\n        \"value\": \"201494\"\n    },\n    \"cui\":{\n        \"type\": \"Text\",\n        \"value\": \"201480\"\n    },\n    \"tel\":{\n        \"type\": \"Text\",\n        \"value\": \"4789-6500\"\n    },\n    \"email\": {\n        \"type\": \"Text\",\n        \"value\": \"secesc2@ort.edu.ar\"\n    },\n    \"modalLevel\":{\n        \"type\": \"Text\",\n        \"value\": \"Secundario\"\n    }\n}"
+					"raw": "\n{\n    \"id\": \"urn:ngsi-ld:Hotel:001\",\n    \"type\": \"Hotel\",\n    \"address\": {\n        \"type\": \"PostalAddress\",\n        \"value\": {\n            \"streetAddress\": \"Posadas 1086\",\n            \"addressRegion\": \"Buenos Aires\",\n            \"addressLocality\": \"Ciudad autonoma de Buenos Aires\",\n            \"postalCode\": \"1011\"\n        },\n        \"metadata\": {\n            \"verified\": {\n                \"value\": true,\n                \"type\": \"Boolean\"\n            }\n        }\n    },\n    \"location\": {\n        \"type\": \"geo:json\",\n        \"value\": {\n             \"type\": \"Point\",\n             \"coordinates\": [-34.590548, -58.3825661]\n        }\n    },\n    \"name\": {\n        \"type\": \"Text\",\n        \"value\": \"Four Seasons Hotel Buenos Aires\"\n    },\n    \"shortName\":{\n        \"type\": \"Text\",\n        \"value\": \"Four Season Hotel\"\n    },\n    \"cue\":{\n        \"type\": \"Text\",\n        \"value\": \"\"\n    },\n    \"cui\":{\n        \"type\": \"Text\",\n        \"value\": \"\"\n    },\n    \"tel\":{\n        \"type\": \"Text\",\n        \"value\": \"4321-1200\"\n    },\n    \"email\": {\n        \"type\": \"Text\",\n        \"value\": \"\"\n    },\n    \"modalLevel\":{\n        \"type\": \"Text\",\n        \"value\": \"\"\n    }\n}"
 				},
 				"url": {
 					"raw": "http://{{Host}}:1026/v2/entities",
@@ -121,7 +121,7 @@
 			"response": []
 		},
 		{
-			"name": "Crear entidad aula labo 1",
+			"name": "Crear entidad habitacion",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -131,13 +131,13 @@
 					},
 					{
 						"key": "fiware-service",
-						"value": "{{service}}",
-						"type": "text"
+						"type": "text",
+						"value": "openiot"
 					},
 					{
 						"key": "fiware-servicepath",
-						"value": "/{{servicepath}}",
-						"type": "text"
+						"type": "text",
+						"value": "/recintos"
 					}
 				],
 				"body": {
@@ -351,6 +351,90 @@
 			"response": []
 		},
 		{
+			"name": "crear subscription de entidades Hotel",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "fiware-service",
+						"value": "openiot"
+					},
+					{
+						"key": "fiware-servicepath",
+						"type": "text",
+						"value": "/edificios"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"description\": \"Notify me of sense data\",\n  \"subject\": {\n    \"entities\": [{\"idPattern\": \".*\", \"type\": \"Escuela\"}],\n    \"condition\": {\n      \"attrs\": []\n    }\n  },\n  \"notification\": {\n    \"http\": {\n      \"url\": \"http://fiware-draco:5050/v2/notify\"\n    }\n  }\n}"
+				},
+				"url": {
+					"raw": "http://46.17.108.92:1026/v2/subscriptions/",
+					"protocol": "http",
+					"host": [
+						"46",
+						"17",
+						"108",
+						"92"
+					],
+					"port": "1026",
+					"path": [
+						"v2",
+						"subscriptions",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear subscription de entidades habitacion",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "fiware-service",
+						"value": "openiot"
+					},
+					{
+						"key": "fiware-servicepath",
+						"type": "text",
+						"value": "/edificios"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"description\": \"Notify me of sense data\",\n  \"subject\": {\n    \"entities\": [{\"idPattern\": \".*\", \"type\": \"Escuela\"}],\n    \"condition\": {\n      \"attrs\": []\n    }\n  },\n  \"notification\": {\n    \"http\": {\n      \"url\": \"http://fiware-draco:5050/v2/notify\"\n    }\n  }\n}"
+				},
+				"url": {
+					"raw": "http://46.17.108.92:1026/v2/subscriptions/",
+					"protocol": "http",
+					"host": [
+						"46",
+						"17",
+						"108",
+						"92"
+					],
+					"port": "1026",
+					"path": [
+						"v2",
+						"subscriptions",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Crear subscripcion de dht11",
 			"request": {
 				"method": "POST",
@@ -482,7 +566,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "\n{\n    \"shortName\":{\n        \"type\": \"Text\",\n        \"value\": \"ET Ort02\"\n    },\n    \"cue\":{\n        \"type\": \"Text\",\n        \"value\": \"201494\"\n    },\n    \"cui\":{\n        \"type\": \"Text\",\n        \"value\": \"201480\"\n    },\n    \"tel\":{\n        \"type\": \"Text\",\n        \"value\": \"4789-6500\"\n    },\n    \"email\": {\n        \"type\": \"Text\",\n        \"value\": \"secesc2@ort.edu.ar\"\n    },\n    \"modalLevel\":{\n        \"type\": \"Text\",\n        \"value\": \"Secundario\"\n    }\n}"
+					"raw": "\n{\n    \"email\": {\n        \"type\": \"Text\",\n        \"value\": \"secesc2@ort.edu.ar\"\n    }\n}"
 				},
 				"url": {
 					"raw": "http://{{Host}}:1026/v2/entities/urn:ngsi-ld:Escuela:001/attrs",
